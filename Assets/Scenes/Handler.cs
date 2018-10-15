@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Handler : MonoBehaviour {
 
-	public void playGame()
+	public void PlayGame()
     {
-        SceneManager.LoadScene("LevelExample");
+        SceneManager.LoadScene("Level1");
     }
 
-    public void quitGame()
+    public void QuitGame()
     {
         Debug.Log("quit");
         Application.Quit();
