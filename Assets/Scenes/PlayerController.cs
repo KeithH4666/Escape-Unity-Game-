@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
         player = GameObject.Find("Player").GetComponent<Transform>();
+        
 	}
 	
 	
