@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
     public float speed = 10.0f;
     public bool facingRight = true;
     public bool facingUp = true;
+    public bool facingLeft = true;
+    public bool facingDown = true;
     Vector2 AxisInput;
 
     Transform player;
@@ -37,12 +39,15 @@ public class PlayerController : MonoBehaviour {
     void flip()
     {
         facingRight = !facingRight;
+        
         transform.Rotate(0f,180f,0f);
         //FixedUpdate();
     }
     void flip2()
     {
         facingUp = !facingUp;
+        
+        
         transform.Rotate(180f, 0f, 0f);
         //FixedUpdate();
     }
@@ -60,8 +65,8 @@ public class PlayerController : MonoBehaviour {
             body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
             
         }
-
-        if(horizontal < 0 && facingRight)
+       
+        if (horizontal < 0 && facingRight)
         {
             flip();
         }
