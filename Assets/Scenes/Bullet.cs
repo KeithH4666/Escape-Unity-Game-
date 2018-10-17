@@ -9,6 +9,18 @@ public class Bullet : MonoBehaviour {
 
 	void Start () {
         rb.velocity = transform.right * speed;
+        InvokeRepeating("destroy", 1, 1);
+    
 	}
-	
+
+    void destroy()
+    {
+        Destroy(gameObject, 1);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+       // Destroy(gameObject);
+    }
+
 }

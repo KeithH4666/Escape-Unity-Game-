@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            Debug.Log("fire");
         }
 
         
@@ -20,6 +21,7 @@ public class Weapon : MonoBehaviour {
 
     void Shoot()
     {
+        Debug.Log("fire2");
         Instantiate(bullet,firePoint.position,firePoint.rotation);
     }
 }
