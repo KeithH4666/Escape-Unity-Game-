@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public bool facingUp = true;
     public bool facingLeft = true;
     public bool facingDown = true;
+    public int playerHealth = 100;
     Vector2 AxisInput;
 
     Transform player;
@@ -35,6 +36,23 @@ public class PlayerController : MonoBehaviour {
         vertical = Input.GetAxisRaw("Vertical");
     }
 
+    public void TakeDamage(int damage)
+    {
+        playerHealth -= damage;
+
+        if (playerHealth <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    void Die()
+    {
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
 
     void flip()
     {
@@ -43,14 +61,7 @@ public class PlayerController : MonoBehaviour {
         transform.Rotate(0f,180f,0f);
         //FixedUpdate();
     }
-    void flip2()
-    {
-        facingUp = !facingUp;
-        
-        
-        transform.Rotate(180f, 0f, 0f);
-        //FixedUpdate();
-    }
+
 
 
     void FixedUpdate () {
@@ -74,14 +85,7 @@ public class PlayerController : MonoBehaviour {
         {
             flip();
         }
-        if (vertical < 0 && facingUp)
-        {
-            flip2();
-        }
-        if (vertical > 0 && !facingUp)
-        {
-            flip2();
-        }
+        
 
 
 

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58369961593957738}
   - component: {fileID: 114738139554552190}
   m_Layer: 0
-  m_Name: Shot - Copy
+  m_Name: ShotTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  rb: {fileID: 50135624774201254}
+  rb: {fileID: 50135624774201254, guid: 05c208e8f1aa5944094092230f1f22d8, type: 2}
 --- !u!212 &212149521440862914
 SpriteRenderer:
   m_ObjectHideFlags: 1
