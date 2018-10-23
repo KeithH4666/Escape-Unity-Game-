@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212149521440862914}
   - component: {fileID: 50135624774201254}
   - component: {fileID: 58369961593957738}
-  - component: {fileID: 114738139554552190}
+  - component: {fileID: 114026563118152336}
   m_Layer: 0
   m_Name: ShotTwo
   m_TagString: Untagged
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114738139554552190
+--- !u!114 &114026563118152336
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,11 +86,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1348610280439262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611dc8c9e4a83fb4e951331e8f5147b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 148b01e3c5047d44f8ab7f5b4317f9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  rb: {fileID: 50135624774201254, guid: 05c208e8f1aa5944094092230f1f22d8, type: 2}
+  Bulletspeed: 20
+  Enemyrb: {fileID: 50135624774201254}
 --- !u!212 &212149521440862914
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,16 +7,17 @@ public class Enemy : MonoBehaviour {
     public GameObject bullet;
     public Transform firePointEnemy;
     public GameObject deathEffect;
-    public GameObject enemyThree;
+    //public GameObject enemyThree;
 
     public float fireRate;
     public float nextFire;
     public int health = 100;
 	// Use this for initialization
 	void Start () {
-        fireRate = 1f;
+
+        fireRate = 2f;
         nextFire = Time.time;
-        enemyThree.transform.Rotate(0f, 180f, 0f);
+       
     }
 	
 	// Update is called once per frame

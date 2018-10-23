@@ -36,7 +36,14 @@ public class PlayerController : MonoBehaviour {
         vertical = Input.GetAxisRaw("Vertical");
     }
 
-    public void TakeDamage(int damage)
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("player hit" + collision.name);
+
+    }
+
+
+        public void TakeDamage(int damage)
     {
         playerHealth -= damage;
 

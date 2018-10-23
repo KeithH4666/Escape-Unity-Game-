@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
     public Rigidbody2D rb;
 
 	void Start () {
+
         rb.velocity = transform.right * speed;
         InvokeRepeating("destroy", 1, 1);
     
@@ -22,18 +23,16 @@ public class Bullet : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
-        PlayerController player = collision.GetComponent<PlayerController>();
+       
         Debug.Log(collision.name);
 
         if(enemy != null)
         {
             enemy.TakeDamage(50);
+           
         }
-        if (player != null)
-        {
-            player.TakeDamage(50);
-        }
-        //Destroy(gameObject);
+       
+        Destroy(gameObject);
 
     }
 
