@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour {
     public int playerHealth = 100;
     Vector2 AxisInput;
 
-    Transform player;
+    public Transform player;
+    public Transform firePoint;
+    //public Transform firePoint;
 
     Rigidbody2D body;
     float horizontal;
@@ -20,20 +22,62 @@ public class PlayerController : MonoBehaviour {
     float moveLimiter = 0.7f;
     public float runSpeed = 10;
 
+    //Joystick 
+    private bool touch = false;
+    private Vector2 pointA;
+    private Vector2 pointB;
+    public Vector2 offset;
+    public Vector2 direction;
 
-    
-	void Start () {
+    public Transform circle;
+    public Transform outerCircle;
+
+
+
+    void Start () {
         //player = GameObject.Find("Player").GetComponent<Transform>();
         //transform.Rotate(Vector3.up * 90);
 
-        body = GetComponent<Rigidbody2D>();
+        //body = GetComponent<Rigidbody2D>();
 
     }
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        
+        //horizontal = Input.GetAxisRaw("Horizontal");
+       // vertical = Input.GetAxisRaw("Vertical");
+
+        //Debug.Log(horizontal);
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("touch");
+            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,Camera.main.transform.position.z));
+
+            circle.transform.position = pointA * -1;
+            outerCircle.transform.position = pointA * -1;
+            circle.GetComponent<SpriteRenderer>().enabled = true;
+            outerCircle.GetComponent<SpriteRenderer>().enabled = true;
+
+        }
+        if (Input.GetMouseButton(0))
+        {
+            touch = true;
+                Debug.Log("touch");
+            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        }
+        else
+        {
+            touch = false;
+        }
+    }
+
+    void MoveChar(Vector2 direction)
+    {
+        player.Translate(direction * speed * Time.deltaTime);
+        Debug.Log("players position" + player.position);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -65,7 +109,7 @@ public class PlayerController : MonoBehaviour {
     {
         facingRight = !facingRight;
         
-        transform.Rotate(0f,180f,0f);
+        firePoint.transform.Rotate(0f,180f,0f);
         //FixedUpdate();
     }
 
@@ -73,17 +117,8 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate () {
 
-        if (horizontal != 0 && vertical != 0)
-        {
-            body.velocity = new Vector2((horizontal * runSpeed) * moveLimiter, (vertical * runSpeed) * moveLimiter);
-            
-        }
-        else
-        {
-            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
-            
-        }
-       
+        //Debug.Log(horizontal);
+        /*
         if (horizontal < 0 && facingRight)
         {
             flip();
@@ -91,6 +126,60 @@ public class PlayerController : MonoBehaviour {
         if (horizontal > 0 && !facingRight)
         {
             flip();
+        }
+        */
+
+        if (touch)
+        {
+            offset = pointB - pointA;
+            direction = Vector2.ClampMagnitude(offset, 1.0f);
+            MoveChar(direction*-1);
+
+            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * 1;
+
+            Debug.Log(offset);
+
+            if(offset.x > 0.0 && facingRight)
+            {
+                flip();
+            }
+            if(offset.x < 0.0 && !facingRight)
+            {
+                flip();
+            }
+            /*
+            if (horizontal != 0 && vertical != 0)
+            {
+                Vector2 offset = pointB - pointA;
+                body.velocity = new Vector2((horizontal * runSpeed) * moveLimiter, (vertical * runSpeed) * moveLimiter);
+
+            }
+            else
+            {
+                body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+
+            }
+
+        
+
+            if (horizontal < 0 && facingRight)
+            {
+                flip();
+            }
+            if (horizontal > 0 && !facingRight)
+            {
+                flip();
+            }
+            */
+
+
+        }
+        else
+        {
+
+            circle.GetComponent<SpriteRenderer>().enabled = false;
+            outerCircle.GetComponent<SpriteRenderer>().enabled = false;
+
         }
         
 

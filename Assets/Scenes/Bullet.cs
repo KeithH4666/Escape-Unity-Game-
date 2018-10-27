@@ -7,9 +7,12 @@ public class Bullet : MonoBehaviour {
     public float speed = 20f;
     public Rigidbody2D rb;
 
-	void Start () {
+    PlayerController playercontroller = new PlayerController();
 
+	void Start () {
+       
         rb.velocity = transform.right * speed;
+       
         InvokeRepeating("destroy", 1, 1);
     
 	}
@@ -26,13 +29,25 @@ public class Bullet : MonoBehaviour {
        
         Debug.Log(collision.name);
 
-        if(enemy != null)
+        if(collision.name == "Player")
+        {
+            Debug.Log("self hit,dont destroy");
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        if(enemy != null )
         {
             enemy.TakeDamage(50);
-           
+            Destroy(gameObject);
+
         }
+
        
-        Destroy(gameObject);
+       
+       
 
     }
 

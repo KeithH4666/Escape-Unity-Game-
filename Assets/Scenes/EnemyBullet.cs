@@ -17,7 +17,8 @@ public class EnemyBullet : MonoBehaviour
     {
         Enemyrb = GetComponent<Rigidbody2D>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        moveDirection = (player.transform.position - transform.position).normalized * Bulletspeed;
+        moveDirection = (player.player.transform.position - transform.position).normalized * Bulletspeed;
+        Debug.Log("player" + player.transform.position);
         //Enemyrb.velocity = transform.right * Bulletspeed;
         Enemyrb.velocity = new Vector2(moveDirection.x, moveDirection.y);
         
