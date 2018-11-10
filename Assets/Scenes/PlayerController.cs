@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -58,8 +59,8 @@ public class PlayerController : MonoBehaviour {
 
             circle.transform.position = pointA * -1;
             outerCircle.transform.position = pointA * -1;
-            circle.GetComponent<SpriteRenderer>().enabled = true;
-            outerCircle.GetComponent<SpriteRenderer>().enabled = true;
+            //circle.GetComponent<SpriteRenderer>().enabled = true;
+            //outerCircle.GetComponent<SpriteRenderer>().enabled = true;
 
         }
         if (Input.GetMouseButton(0))
@@ -102,6 +103,9 @@ public class PlayerController : MonoBehaviour {
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        
+        //Temporary end game 
+        SceneManager.LoadScene("Menu");
     }
 
 
@@ -135,7 +139,7 @@ public class PlayerController : MonoBehaviour {
             direction = Vector2.ClampMagnitude(offset, 1.0f);
             MoveChar(direction*-1);
 
-            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * 1;
+            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * -1;
 
             Debug.Log(offset);
 
