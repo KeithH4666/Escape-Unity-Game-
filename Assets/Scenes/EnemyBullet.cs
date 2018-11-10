@@ -22,12 +22,14 @@ public class EnemyBullet : MonoBehaviour
         //Enemyrb.velocity = transform.right * Bulletspeed;
         Enemyrb.velocity = new Vector2(moveDirection.x, moveDirection.y);
         
+        // used for game preformance destroying bullet after 1 second 
         InvokeRepeating("destroy", 1, 1);
 
     }
 
     void destroy()
     {
+        // Destroys bullet after 1 second to avoid multiple objects being instatciated causing the game preformance to suffer
         Destroy(gameObject, 1);
     }
 
@@ -40,9 +42,14 @@ public class EnemyBullet : MonoBehaviour
 
         if (player != null)
         {
+            // Update score -5 each time player gets hit
+            ScoreUpdate.scoreValue -= 5;
+
+            // Update player health
             player.TakeDamage(50);
         }
 
+        // Destroy Bullet
         Destroy(gameObject);
 
     }

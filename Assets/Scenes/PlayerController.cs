@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour {
 
             Debug.Log(offset);
 
+            // Using x and y offset  to determine which direction the player is facing, needed to get which direction the  bullet is going
             if(offset.x > 0.0 && facingRight)
             {
                 flip();

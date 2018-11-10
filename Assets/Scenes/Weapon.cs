@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // Space bar used to shoot
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -22,6 +23,8 @@ public class Weapon : MonoBehaviour {
     void Shoot()
     {
         Debug.Log("fire2");
+
+        //Create a bullet at the player firepoint
         Instantiate(bullet,firePoint.position,firePoint.rotation);
     }
 }

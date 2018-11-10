@@ -12,13 +12,15 @@ public class Bullet : MonoBehaviour {
 	void Start () {
        
         rb.velocity = transform.right * speed;
-       
+
+        // used for game preformance destroying bullet after 1 second 
         InvokeRepeating("destroy", 1, 1);
     
 	}
 
     void destroy()
     {
+        // Destroys bullet after 1 second to avoid multiple objects being instatciated causing the game preformance to suffer
         Destroy(gameObject, 1);
     }
 
@@ -29,6 +31,7 @@ public class Bullet : MonoBehaviour {
        
         Debug.Log(collision.name);
 
+        //Only destroy object that isnt the player, used to fix a bug where the bullet destroys the player 
         if(collision.name == "Player")
         {
             Debug.Log("self hit,dont destroy");
@@ -40,6 +43,10 @@ public class Bullet : MonoBehaviour {
 
         if(enemy != null )
         {
+            // + score by 10 each time player is hit!
+            ScoreUpdate.scoreValue += 10;
+
+            // Cause the enemy to take damage to enemy health
             enemy.TakeDamage(50);
             Destroy(gameObject);
 
