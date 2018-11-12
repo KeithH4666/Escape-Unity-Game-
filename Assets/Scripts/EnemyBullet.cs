@@ -11,6 +11,9 @@ public class EnemyBullet : MonoBehaviour
     PlayerController player;
     Vector2 moveDirection;
 
+    private GameObject Enemy;
+    private GameObject ShotTwo;
+
 
 
     void Start()
@@ -18,7 +21,8 @@ public class EnemyBullet : MonoBehaviour
         Enemyrb = GetComponent<Rigidbody2D>();
         player = GameObject.FindObjectOfType<PlayerController>();
         moveDirection = (player.player.transform.position - transform.position).normalized * Bulletspeed;
-        Debug.Log("player" + player.transform.position);
+        
+        //Debug.Log("player" + player.transform.position);
         //Enemyrb.velocity = transform.right * Bulletspeed;
         Enemyrb.velocity = new Vector2(moveDirection.x, moveDirection.y);
         
@@ -38,7 +42,7 @@ public class EnemyBullet : MonoBehaviour
     {
       
         PlayerController player = collision.GetComponent<PlayerController>();
-        Debug.Log(collision.name);
+        //Debug.Log(collision.name);
 
         if (player != null)
         {
@@ -49,7 +53,11 @@ public class EnemyBullet : MonoBehaviour
             player.TakeDamage(50);
         }
 
+       
+
+        //Physics2D.IgnoreCollision(this.GetComponent<CircleCollider2D>(), Enemy.GetComponent<BoxCollider2D>());
         // Destroy Bullet
+        
         Destroy(gameObject);
 
     }

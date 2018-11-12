@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("touch");
+            //Debug.Log("touch");
             pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,Camera.main.transform.position.z));
 
             circle.transform.position = pointA * -1;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             touch = true;
-                Debug.Log("touch");
+                //Debug.Log("touch");
             pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
         }
         else
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour {
     void MoveChar(Vector2 direction)
     {
         player.Translate(direction * speed * Time.deltaTime);
-        Debug.Log("players position" + player.position);
+       // Debug.Log("players position" + player.position);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 
             circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y) * -1;
 
-            Debug.Log(offset);
+            //Debug.Log(offset);
 
             // Using x and y offset  to determine which direction the player is facing, needed to get which direction the  bullet is going
             if(offset.x > 0.0 && facingRight)

@@ -5,14 +5,21 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     public GameObject bullet;
+    public GameObject Player;
     public Transform firePointEnemy;
-    public GameObject deathEffect;
+   // public GameObject deathEffect;
     //public GameObject enemyThree;
 
     public float fireRate;
     public float nextFire;
     public int health = 100;
-	// Use this for initialization
+    // Use this for initialization
+
+    public BoxCollider2D trigger;
+
+    
+    private bool isPlayerNear = false;
+
 	void Start () {
 
         fireRate = 2f;
@@ -22,8 +29,25 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+     
         checkTimeFire();
+        //checkPlayerToSpawnEnemy();
+    
 	}
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+        if(col == trigger)
+        {
+            Debug.Log("Hit");
+
+        }
+    
+
+    }
+
 
     void checkTimeFire()
     {
@@ -34,8 +58,17 @@ public class Enemy : MonoBehaviour {
         }
       
     }
+    
+    void checkPlayerToSpawnEnemy()
+    {
+        Debug.Log(Player.transform.position);
+    }
 
-   
+ 
+
+
+
+ 
 
     public void TakeDamage(int damage)
     {
