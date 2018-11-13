@@ -42,7 +42,7 @@ public class EnemyBullet : MonoBehaviour
     {
       
         PlayerController player = collision.GetComponent<PlayerController>();
-        //Debug.Log(collision.name);
+        Debug.Log(collision.name);
 
         if (player != null)
         {

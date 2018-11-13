@@ -10,8 +10,8 @@ public class Weapon : MonoBehaviour {
 	void Update () {
 
         // Space bar used to shoot
-       // if (Input.GetButtonDown("Fire1"))
-        if(Input.GetMouseButton(1))
+       if (Input.GetButtonDown("Fire1"))
+        //if(Input.GetMouseButton(1))
         {
             Shoot();
             Debug.Log("fire");
