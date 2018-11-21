@@ -15,4 +15,14 @@ public class Handler : MonoBehaviour {
         Debug.Log("quit");
         Application.Quit();
     }
+
+    public void Register()
+    {
+        SceneManager.LoadScene("Register");
+    }
+
+    public void LogIn()
+    {
+        SceneManager.LoadScene("LogIn");
+    }
 }
