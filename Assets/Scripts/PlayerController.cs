@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public bool facingUp = true;
     public bool facingLeft = true;
     public bool facingDown = true;
-    public int playerHealth = 100;
+    //public int playerHealth = 100;
     Vector2 AxisInput;
 
     public Transform player;
@@ -90,9 +90,10 @@ public class PlayerController : MonoBehaviour {
 
         public void TakeDamage(int damage)
     {
-        playerHealth -= damage;
+        // playerHealth -= damage;
+        ScoreUpdate.health -= 50;
 
-        if (playerHealth <= 0)
+        if (ScoreUpdate.health <= 0)
         {
             Die();
         }

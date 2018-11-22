@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NextLevel : MonoBehaviour {
+public class NextLevel2 : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -11,8 +11,7 @@ public class NextLevel : MonoBehaviour {
         // Every time the player goes to the exit load back the menu 
         if (col.name == "Player")
         {
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("Menu");
         }
     }
-
 }
