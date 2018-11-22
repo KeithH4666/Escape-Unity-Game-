@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour {
     public Transform circle;
     public Transform outerCircle;
 
+    SpriteRenderer Player;
+
+
+
 
 
     void Start () {
@@ -41,13 +45,19 @@ public class PlayerController : MonoBehaviour {
 
         //body = GetComponent<Rigidbody2D>();
 
+        Player = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
     {
-        
+        if (ScoreUpdate.health < 100)
+        {
+            Player.color = new Color(255f, 255f, 255f, .3f);
+        }
+
         //horizontal = Input.GetAxisRaw("Horizontal");
-       // vertical = Input.GetAxisRaw("Vertical");
+        // vertical = Input.GetAxisRaw("Vertical");
 
         //Debug.Log(horizontal);
 
@@ -93,6 +103,7 @@ public class PlayerController : MonoBehaviour {
         // playerHealth -= damage;
         ScoreUpdate.health -= 50;
 
+
         if (ScoreUpdate.health <= 0)
         {
             Die();
@@ -104,6 +115,8 @@ public class PlayerController : MonoBehaviour {
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        ScoreUpdate.health = 100;
+        ScoreUpdate.scoreValue = 0;
         
         //Temporary end game 
         SceneManager.LoadScene("Menu");

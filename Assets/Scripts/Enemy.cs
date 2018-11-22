@@ -17,14 +17,18 @@ public class Enemy : MonoBehaviour {
 
     public BoxCollider2D trigger;
 
-    
+    SpriteRenderer EnemyColor;
+
+
     private bool isPlayerNear = false;
 
 	void Start () {
 
         fireRate = 2f;
         nextFire = Time.time;
-       
+
+        EnemyColor = GetComponent<SpriteRenderer>();
+
     }
 	
 	// Update is called once per frame
@@ -74,8 +78,9 @@ public class Enemy : MonoBehaviour {
     {
         health -= damage;
 
+        EnemyColor.color = new Color(255f, 0f, 0f, .3f);
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
