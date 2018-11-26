@@ -11,7 +11,7 @@ public class NextLevel2 : MonoBehaviour {
         // Every time the player goes to the exit load back the menu 
         if (col.name == "Player")
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("FinalLevel");
         }
     }
 }

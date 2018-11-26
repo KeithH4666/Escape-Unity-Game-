@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour {
+public class EnemySpawnFinal : MonoBehaviour
+{
 
     public GameObject enemy;
     public GameObject spawnSpace;
+
+    public GameObject enemy2;
+   
     //public Transform EnemyBullet;
 
-   
+
 
     private void Start()
     {
         enemy.SetActive(false);
+        enemy2.SetActive(false);
         //EnemyBullet.GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -22,10 +27,12 @@ public class EnemySpawn : MonoBehaviour {
         {
             enemy.SetActive(true);
             spawnSpace.SetActive(false);
+
+            enemy2.SetActive(true);
+            //spawnSpace2.SetActive(false);
             //spawnSpace.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log(otherObject.name);
             //EnemyBullet.GetComponent<SpriteRenderer>().enabled = true;
         }
-
     }
 }
