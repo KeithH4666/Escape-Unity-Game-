@@ -8,6 +8,7 @@ public class Handler : MonoBehaviour {
 	public void PlayGame()
     {
         SceneManager.LoadScene("Level1");
+        PauseMenu.gamePaused = false;
     }
 
     public void QuitGame()
