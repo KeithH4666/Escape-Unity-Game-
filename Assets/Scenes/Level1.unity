@@ -2202,6 +2202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 562807322}
   bullet: {fileID: 1348610280439262, guid: 05c208e8f1aa5944094092230f1f22d8, type: 2}
+  audioData: {fileID: 8300000, guid: a10c0e9ca96908f4a801964c1d8708d8, type: 3}
 --- !u!1 &1703570828
 GameObject:
   m_ObjectHideFlags: 0

@@ -2074,6 +2074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1078457362}
   bullet: {fileID: 1348610280439262, guid: 05c208e8f1aa5944094092230f1f22d8, type: 2}
+  audioData: {fileID: 8300000, guid: a10c0e9ca96908f4a801964c1d8708d8, type: 3}
 --- !u!50 &1525102321
 Rigidbody2D:
   serializedVersion: 4
@@ -2521,7 +2522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1943451337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b49bd1e48c29fa94f9fac9eeb83d70b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 427647cf5b78f9e48b6ea18f87cc5b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!23 &1943451340

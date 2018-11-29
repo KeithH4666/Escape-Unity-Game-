@@ -6,8 +6,10 @@ public class Weapon : MonoBehaviour {
 
     public Transform firePoint;
     public GameObject bullet;
-	// Update is called once per frame
-	void Update () {
+    public AudioClip audioData;
+
+    // Update is called once per frame
+    void Update () {
 
         // Space bar used to shoot
        if (Input.GetButtonDown("Fire1"))
@@ -24,7 +26,7 @@ public class Weapon : MonoBehaviour {
     void Shoot()
     {
         Debug.Log("fire2");
-
+        AudioSource.PlayClipAtPoint(audioData, transform.position);
         //Create a bullet at the player firepoint
         Instantiate(bullet,firePoint.position,firePoint.rotation);
     }
