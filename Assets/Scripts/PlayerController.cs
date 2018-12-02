@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour {
         {
             Player.color = new Color(255f, 255f, 255f, .3f);
         }
+        if(ScoreUpdate.health <= 0)
+        {
+            Debug.Log("start save");
+            StartCoroutine(savePlayerData());
+        }
 
         //horizontal = Input.GetAxisRaw("Horizontal");
         // vertical = Input.GetAxisRaw("Vertical");
@@ -114,11 +119,14 @@ public class PlayerController : MonoBehaviour {
     void Die()
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-        ScoreUpdate.health = 100;
-        ScoreUpdate.scoreValue = 0;
         
+        Destroy(gameObject);
+        
+        ScoreUpdate.health = 100;
+        //ScoreUpdate.scoreValue = 0;
+
         //Temporary end game 
+        StartCoroutine(savePlayerData());
         SceneManager.LoadScene("Menu");
     }
 
@@ -131,7 +139,30 @@ public class PlayerController : MonoBehaviour {
         //FixedUpdate();
     }
 
+    IEnumerator savePlayerData()
+    {
+        Debug.Log("Started save");
+        WWWForm form = new WWWForm();
 
+        form.AddField("name", DBManager.userName);
+        form.AddField("score", ScoreUpdate.scoreValue);
+
+        WWW www = new WWW("http://starling5718.getlark.hosting/ScoreUpdate.php", form);
+        yield return www;
+
+        if (www.text == "0")
+        {
+            Debug.Log("Game Saved");
+        }
+        else
+        {
+            Debug.Log("Problems occured saving game");
+        }
+
+        DBManager.logOut();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+
+    }
 
     void FixedUpdate () {
 
