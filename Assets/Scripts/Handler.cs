@@ -2,10 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Handler : MonoBehaviour {
 
-	public void PlayGame()
+    public Text playerDisplay;
+
+    private void Start()
+    {
+        if (DBManager.loggedIn)
+        {
+            playerDisplay.text = "Player: " + DBManager.userName;
+        }   
+    }
+
+    public void PlayGame()
     {
         SceneManager.LoadScene("Level1");
         PauseMenu.gamePaused = false;

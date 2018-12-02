@@ -23,8 +23,9 @@ public class Register : MonoBehaviour {
         form.AddField("name", namefield.text);
         form.AddField("pass", pass.text);
 
-        WWW www = new WWW("https://leaderboardgmit.000webhostapp.com/sqlconnect.php", form);
+        WWW www = new WWW("http://starling5718.getlark.hosting/sqlconnect.php", form);
         yield return www;
+        Debug.Log(www.text);
 
         if(www.text == "0")
         {
@@ -34,6 +35,7 @@ public class Register : MonoBehaviour {
         else
         {
             Debug.Log("Error " + www.text);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
         }
 
     }
