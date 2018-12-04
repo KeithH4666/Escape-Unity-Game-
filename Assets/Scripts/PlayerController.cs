@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour {
 
 
 
-
-
     void Start () {
         //player = GameObject.Find("Player").GetComponent<Transform>();
         //transform.Rotate(Vector3.up * 90);
@@ -46,6 +44,7 @@ public class PlayerController : MonoBehaviour {
         //body = GetComponent<Rigidbody2D>();
 
         Player = GetComponent<SpriteRenderer>();
+        
 
     }
 
@@ -60,6 +59,8 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("start save");
             StartCoroutine(savePlayerData());
         }
+
+        Debug.Log(ScoreUpdate.scoreValue);
 
         //horizontal = Input.GetAxisRaw("Horizontal");
         // vertical = Input.GetAxisRaw("Vertical");
